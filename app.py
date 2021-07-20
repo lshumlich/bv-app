@@ -11,6 +11,7 @@ app = Flask(__name__)
 def hello_world():
     return """
     <p>Hello, World!</p>
+    <h1>Version 0.4</h1>
     what's up dude. 
     and stuff
     and stuff
