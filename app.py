@@ -3,16 +3,25 @@ print("This will be the entry point")
 
 print("But that's it folks")
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return """
+    <p>Hello, World!</p>
+    what's up dude. 
+    and stuff
+    and stuff
+    and stuff
+"""
 
+@app.route("/index")
+def index():
+    return render_template('index.html')
 
 # '----+----1----+----2----+----3----+----4----+----5'
 if __name__ == '__main__':
     # app.run(debug=True, host='localhost')
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=80)
