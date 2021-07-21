@@ -24,4 +24,5 @@ USER appuser
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 EXPOSE 80
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
+CMD ["gunicorn"  , "-b", "0.0.0.0:80", "app:app"]
