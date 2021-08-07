@@ -37,6 +37,30 @@ only change a little before you test, like one line at a time if practical.
     * Test the app running in the container [localhost:5010](http://localhost:5010). You can use any 
     available port number instead of 5010.
 1. Push changes to the repository. The repository is hosted on AWS CodeCommit.
+1. Create a Docker image and push to AWS ECR
+    * Create a CodeBuild project to: run the tests, build the docker container, push the container to ECR. 
+    ??? Doc how and where to do this ??? 
+    * For now run the CodeBuild Project called DevOps-train4. This currently runs file buildspec.yml on the root of this project.
+1. Deploy the image on AWS.
+    * ??? Needs some work. 
+    * Go to AWS CloudFormation
+    * Select Create a stack 
+    * Select Options:
+        * Template is ready
+        * Upload a template file
+        * Choose file: devops_training\CloudFormation\createCluster.yaml
+        * select Next button
+
+
+## To Do
+
+(How to show / teach the students to do this in 1.5 weeks)
+
+1. Automate the build process so the container gets built when new code is checked in.
+1. Automate the deploy process so the container gets deployed when the container gets built.
+    * do a simple deploy
+    * use a blue green deploy strategy
+1. Run the tests. Determine if the tests can and should be run inside the Docker container?
 
 
 
