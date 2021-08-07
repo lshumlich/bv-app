@@ -23,7 +23,7 @@ def hello_world():
 
 def get_info():
     return f"""
-    <h2>Version 0.07 2021-08-07 8:24AM </h2>
+    <h2>Version 0.08 2021-08-07 1:27PM </h2>
     <br/>gethostname: {socket.gethostname()}
     <br/>getfqdn: {socket.getfqdn()}
     <br/>architecture: {platform.architecture()}

@@ -70,6 +70,9 @@ only change a little before you test the app, like one line at a time if practic
         * Select the **Outputs** tab
         * Select the Endpoint value/link
         * Congragulations. Test the application running on AWS.
+1. Deploy an update while it's running
+
+
 
 
 
