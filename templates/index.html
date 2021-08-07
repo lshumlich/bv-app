@@ -8,7 +8,6 @@
     <title>DevOps Training</title>
 </head>
 <style>
-
     .clNiceBox {
         border: solid;
         border-radius: 25px;
@@ -28,10 +27,8 @@
         <h1>Welcome to DevOps Training</h1>
         {{ msg|safe }}
         <br /> <br />
-        This is definitely coming from the docker container.
+        This page loaded <br /> <span id="idMsg">this is a span</span>
         <br /> <br />
-        This page loaded <br/> <span id="idMsg">this is a span</span>
-        <br /> <br /> 
         <button onclick="onNow()">Now</button>
         <br>
     </div>
@@ -47,7 +44,7 @@
             idMsg.innerHTML = Date();
         }
 
-</script>
+    </script>
 </body>
 
 </html>

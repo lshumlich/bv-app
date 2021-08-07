@@ -18,19 +18,19 @@ def hello_world():
     a = 'asdf'
     return f"""
     <p>Hello, World!</p>
-    what's up dude. 
-    and stuff
-    and stuff
-    and stuff
     {get_info()}
 """
 
 def get_info():
     return f"""
     <h2>Version 0.07 2021-08-07 8:24AM </h2>
-    <br/>Host: {socket.gethostname()}
-    <br/>Host: {platform.node()}
-
+    <br/>gethostname: {socket.gethostname()}
+    <br/>getfqdn: {socket.getfqdn()}
+    <br/>architecture: {platform.architecture()}
+    <br/>machine: {platform.machine()}
+    <br/>processor: {platform.processor()}
+    <br/>python_version: {platform.python_version()}
+    <br/>system: {platform.system()}
     <br/>
     """
 
