@@ -1,26 +1,38 @@
 
-print("This will be the entry point")
-
-print("But that's it folks")
-
 from flask import Flask, render_template
+import socket
+import platform
+import datetime
+
+startTime = datetime.datetime.now()
+print(f"-------- devops - training -------- server started: {startTime}")
 
 app = Flask(__name__)
 
 @app.route("/")
+def index():
+    return render_template('index.html',msg=get_info())
+
+@app.route("/stuff")
 def hello_world():
-    return """
+    a = 'asdf'
+    return f"""
     <p>Hello, World!</p>
-    <h1>Version 0.5 3:48PM </h1>
     what's up dude. 
     and stuff
     and stuff
     and stuff
+    {get_info()}
 """
 
-@app.route("/index")
-def index():
-    return render_template('index.html')
+def get_info():
+    return f"""
+    <h2>Version 0.07 2021-08-07 8:24AM </h2>
+    <br/>Host: {socket.gethostname()}
+    <br/>Host: {platform.node()}
+
+    <br/>
+    """
 
 # '----+----1----+----2----+----3----+----4----+----5'
 if __name__ == '__main__':

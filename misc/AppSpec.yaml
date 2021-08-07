@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ca-central-1:208019545904:task-definition/Stack2-TaskDefinition-tRlFVaRzbDtc:2"
+        LoadBalancerInfo:
+          ContainerName: "Service2"
+          ContainerPort: 5000
