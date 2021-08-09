@@ -9,9 +9,11 @@ print(f"-------- devops - training -------- server started: {startTime}")
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def index():
-    return render_template('index.html',msg=get_info())
+    return render_template('index.html', msg=get_info())
+
 
 @app.route("/stuff")
 def hello_world():
@@ -21,9 +23,17 @@ def hello_world():
     {get_info()}
 """
 
+
+@app.route("/healthcheck")
+def health_check():
+    return f'app.py ok {datetime.datetime.now()}'
+
+
 def get_info():
+    servedTime = datetime.datetime.now()
+
     return f"""
-    <h2>Version 0.08 2021-08-07 1:27PM </h2>
+    <h2>Version 0.08 2021-08-09 12:01PM </h2>
     <br/>gethostname: {socket.gethostname()}
     <br/>getfqdn: {socket.getfqdn()}
     <br/>architecture: {platform.architecture()}
@@ -31,8 +41,10 @@ def get_info():
     <br/>processor: {platform.processor()}
     <br/>python_version: {platform.python_version()}
     <br/>system: {platform.system()}
+    <br/>servedTime: {servedTime}
     <br/>
     """
+
 
 # '----+----1----+----2----+----3----+----4----+----5'
 if __name__ == '__main__':

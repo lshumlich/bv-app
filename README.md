@@ -13,6 +13,7 @@ Tools used:
     * flask
 * Docker
 * AWS
+* AWS cli
 
 ## To Build the application
 1. Use VSCode to edit the code and make whatever changes to the source that is required. It is highly suggested that you
@@ -41,7 +42,32 @@ only change a little before you test the app, like one line at a time if practic
     * Create a CodeBuild project to: run the tests, build the docker container, push the container to ECR. 
     ??? Doc how and where to do this ??? 
     * For now, run the CodeBuild Project called DevOps-train4. This currently runs file buildspec.yml on the root of this project.
-1. Deploy the image on AWS.
+
+1. Deploy the image on AWS manually
+    * Select Amazon Elastic Container Service (ECS)
+    * Select **Task definitions** from the menu in upper left hand side in the ECS main page
+        * Select **Create new Task Definition** button
+        * Select **FARGATE** box
+        * Select **Next step** button
+    * The **Configure task and container definitions** page should display
+        * Enter **MyTaskDefinitionName** in Task Definition Name
+        * Select the ecsTaskExecutioinRole from the dropdown
+        * ??? Add a container
+        *
+    * Select **Clusters** from the menu in upper left hand side in the ECS main page
+        * Select **Create cluster** button
+        * Select **Networking only** box
+        * Select **Next step** button
+    * The **Configure cluster** should display
+        * Enter: **MyCluster** for Cluster name
+        * Select **Create**
+        * Select **View Cluster** button
+    * The ?????? Start Here Larry
+
+
+
+
+1. Deploy the image on AWS using CloudFormation.
     * ??? Needs some work. 
     * Go to AWS CloudFormation
     * Select Create a stack 
@@ -70,12 +96,27 @@ only change a little before you test the app, like one line at a time if practic
         * Select the **Outputs** tab
         * Select the Endpoint value/link
         * Congragulations. Test the application running on AWS.
-1. Deploy an update while it's running
+1. Deploy an update to a running ECR cluster
+    * To understand [ECR Deploy Concepts with CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps-ecs.html)
+    read this artical.
+    * This seems like a good step by step???: [step by step](https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorial-ecs-deployment.html)
+    There is reference in this artical for:
+        * information about how to use CodePipeline to detect and automatically deploy changes to an Amazon ECS service with CodeDeploy
+        *  Tutorial: Creating a service using a blue/green deployment
+
+
+Questions:
+    * Setting up target groups
+    * Assigning trafic to the target groups
+
+LoadBalancer
+    Listeners Forward to TargetGroups with Rules 
 
 
 
+A listener is attached to a Service
 
-
+Info 
 
 ## To Do
 
@@ -86,6 +127,8 @@ only change a little before you test the app, like one line at a time if practic
     * do a simple deploy
     * use a blue green deploy strategy
 1. Run the tests. Determine if the tests can and should be run inside the Docker container?
+1. Publish test results
+1. 
 
 
 
