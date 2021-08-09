@@ -2,7 +2,11 @@
 # docker run -d -p 5010:5000 devopstraining
 #
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.8-slim-buster
+# Note: See the README.md for instructions on how to copy the docker image to you ECR to avoid docker limits
+FROM 208019545904.dkr.ecr.ca-central-1.amazonaws.com/python:3.8-slim-buster
+# FROM python:3.8-slim-buster
+# The following image worked but it is huge
+# FROM public.ecr.aws/sam/build-python3.8:latest
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1

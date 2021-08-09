@@ -103,6 +103,15 @@ only change a little before you test the app, like one line at a time if practic
     There is reference in this artical for:
         * information about how to use CodePipeline to detect and automatically deploy changes to an Amazon ECS service with CodeDeploy
         *  Tutorial: Creating a service using a blue/green deployment
+    * ??? Larry Finish This
+1. Copy the python docker image to your ECR. We do this to avoid docker limits when building and running.
+    * In ECR create a repository called python.
+    * Select the repository and push the **View push commands** 
+    * We modify them slightly to:
+        1. aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin 208019545904.dkr.ecr.ca-central-1.amazonaws.com
+        1. docker pull python:3.8-slim-buster
+        1. docker tag python:3.8-slim-buster 208019545904.dkr.ecr.ca-central-1.amazonaws.com/python:3.8-slim-buster
+        1. docker push 208019545904.dkr.ecr.ca-central-1.amazonaws.com/python:3.8-slim-buster
 
 
 Questions:
