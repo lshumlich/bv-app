@@ -120,6 +120,9 @@ only change a little before you test the app, like one line at a time if practic
         * Select the **Outputs** tab
         * Select the Endpoint value/link
         * Congragulations. Test the application running on AWS.
+
+
+
 1. Deploy an update to a running ECR cluster
     * To understand [ECR Deploy Concepts with CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps-ecs.html)
     read this artical.
@@ -128,6 +131,9 @@ only change a little before you test the app, like one line at a time if practic
         * information about how to use CodePipeline to detect and automatically deploy changes to an Amazon ECS service with CodeDeploy
         *  Tutorial: Creating a service using a blue/green deployment
     * ??? Larry Finish This
+
+
+
 1. Copy the python docker image to your ECR. We do this to avoid docker limits when building and running.
     * In ECR create a repository called python.
     * Select the repository and push the **View push commands** 
