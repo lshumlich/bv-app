@@ -18,6 +18,7 @@ Tools used:
 ## To Build the application
 1. Use VSCode to edit the code and make whatever changes to the source that is required. It is highly suggested that you
 only change a little before you test the app, like one line at a time if practical.
+
 1. Test locally
     * pipenv shell
     * pipenv install (Only needed once or when a new package is used)
@@ -25,6 +26,7 @@ only change a little before you test the app, like one line at a time if practic
     * In the browser: localhost:5000 
     * test in browser with this [link to localhost:5000!](http://localhost:5000)
     * note that the hostname should be your computer's name
+
 1. Build the Docker container locally and test
     * In VSCode in the Explorer / Project view; right-click on the file named **Dockerfile** and select the **Build Image...** option.
     A new **Image** is created on your local machine.
@@ -37,8 +39,10 @@ only change a little before you test the app, like one line at a time if practic
     * In the **Ports / Local Host** enter **5010**. Press Run. 
     * Test the app running in the container [localhost:5010](http://localhost:5010). You can use any 
     available port number instead of 5010.
-1. Push changes to the repository. The repository is hosted on AWS CodeCommit.
-1. Create a Docker image and push it to AWS ECR
+
+1. Push changes to the source code repository. The repository is hosted on AWS CodeCommit.
+
+1. Create a Docker image and push it to AWS Elastic Container Repository (ECR)
     * Create a CodeBuild project to: run the tests, build the docker container, push the container to ECR. 
     ??? Doc how and where to do this ??? 
     * For now, run the CodeBuild Project called DevOps-train4. This currently runs file buildspec.yml on the root of this project.
@@ -50,18 +54,38 @@ only change a little before you test the app, like one line at a time if practic
         * Select **FARGATE** box
         * Select **Next step** button
     * The **Configure task and container definitions** page should display
-        * Enter **MyTaskDefinitionName** in Task Definition Name
-        * Select the ecsTaskExecutioinRole from the dropdown
-        * ??? Add a container
-        *
+        * Enter **MyECSTaskDef** in Task Definition Name
+        * Select the **ecsTaskExecutioinRole** from the dropdown
+        * Enter **.5GB** in Task memory
+        * Enter **0.25vCPU** in Task CPU
+        * Select **Add a container**
+    * The **Add container** page should display
+        * Enter **MyTaskContainer** in Container name
+        * Enter your version of **208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:latest** in Image
+        * Enter **5000** in port
+        * Select **Add** button
+    * The **Configure task and container definitions** page should display again
+        * Select **Create**
+        * The **Launch Status** page should display
+        * Select **View task definition**
+
     * Select **Clusters** from the menu in upper left hand side in the ECS main page
         * Select **Create cluster** button
         * Select **Networking only** box
         * Select **Next step** button
     * The **Configure cluster** should display
-        * Enter: **MyCluster** for Cluster name
+        * Enter: **MyECSCluster** for Cluster name
         * Select **Create**
         * Select **View Cluster** button
+    * The **MyECSCluster** should display
+        * Select **Deploy** button
+    * The **Deploy** page should display
+        * Select **Service** box
+        * Select **MyECSTaskDev** in the Family dropdown
+        * Select **1** in Revision
+        * Enter **MyECSService** in Service name
+        * 
+
     * The ?????? Start Here Larry
 
 

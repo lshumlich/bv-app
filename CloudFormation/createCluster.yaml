@@ -288,4 +288,5 @@ Outputs:
 
   Endpoint:
     Description: Endpoint
-    Value: !Join ['', ['http://', !Ref DNSRecord, ':5000']]
+    # Value: !Join ['', ['http://', !Ref DNSRecord, ':5000']]
+    Value: !Join ['', ['http://', !Ref DNSRecord]]
