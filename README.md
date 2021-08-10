@@ -46,48 +46,56 @@ only change a little before you test the app, like one line at a time if practic
     * Create a CodeBuild project to: run the tests, build the docker container, push the container to ECR. 
     ??? Doc how and where to do this ??? 
     * For now, run the CodeBuild Project called DevOps-train4. This currently runs file buildspec.yml on the root of this project.
+    * References
+        * https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
+        * https://docs.aws.amazon.com/codebuild/latest/userguide/test-reporting.html
+
 
 1. Deploy the image on AWS manually
     * Select Amazon Elastic Container Service (ECS)
-    * Select **Task definitions** from the menu in upper left hand side in the ECS main page
-        * Select **Create new Task Definition** button
-        * Select **FARGATE** box
-        * Select **Next step** button
-    * The **Configure task and container definitions** page should display
-        * Enter **MyECSTaskDef** in Task Definition Name
-        * Select the **ecsTaskExecutioinRole** from the dropdown
-        * Enter **.5GB** in Task memory
-        * Enter **0.25vCPU** in Task CPU
-        * Select **Add a container**
-    * The **Add container** page should display
-        * Enter **MyTaskContainer** in Container name
-        * Enter your version of **208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:latest** in Image
-        * Enter **5000** in port
-        * Select **Add** button
-    * The **Configure task and container definitions** page should display again
-        * Select **Create**
-        * The **Launch Status** page should display
-        * Select **View task definition**
+    * Create a Task
+        * Select **Task definitions** from the menu in upper left hand side in the ECS main page
+            * Select **Create new Task Definition** button
+            * Select **FARGATE** box
+            * Select **Next step** button
+        * The **Configure task and container definitions** page should display
+            * Enter **MyECSTaskDef** in Task Definition Name
+            * Select the **ecsTaskExecutioinRole** from the dropdown
+            * Select **.5GB** from the dropdown
+            * Select **0.25vCPU** from the dropdown
+            * Select **Add a container**
+        * The **Add container** page should display
+            * Enter **MyTaskContainer** in Container name
+            * Enter your version of **208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:latest** in Image
+            * Enter **5000** in port
+            * Select **Add** button
+        * The **Configure task and container definitions** page should display again
+            * Select **Create**
+            * The **Launch Status** page should display
+            * Select **View task definition**
 
-    * Select **Clusters** from the menu in upper left hand side in the ECS main page
-        * Select **Create cluster** button
-        * Select **Networking only** box
-        * Select **Next step** button
-    * The **Configure cluster** should display
-        * Enter: **MyECSCluster** for Cluster name
-        * Select **Create**
-        * Select **View Cluster** button
-    * The **MyECSCluster** should display
-        * Select **Deploy** button
-    * The **Deploy** page should display
-        * Select **Service** box
-        * Select **MyECSTaskDev** in the Family dropdown
-        * Select **1** in Revision
-        * Enter **MyECSService** in Service name
-        * 
+
+    * Create a Cluster
+
+        * Select **Clusters** from the menu in upper left hand side in the ECS main page
+            * Select **Create cluster** button
+            * Select **Networking only** box
+            * Select **Next step** button
+        * The **Configure cluster** should display
+            * Enter: **MyECSCluster** for Cluster name
+            * Select **Create**
+            * Select **View Cluster** button
+        * The **MyECSCluster** should display
+            * Select **Deploy** button
+        * The **Deploy** page should display
+            * Select **Service** box
+            * Select **MyECSTaskDev** in the Family dropdown
+            * Select **The Latest** in Revision
+            * Enter **MyECSService** in Service name
+            * Spec ---
+            * Leave Deployment type to **Rolling update**
 
     * The ?????? Start Here Larry
-
 
 
 
@@ -142,6 +150,14 @@ only change a little before you test the app, like one line at a time if practic
         1. docker pull python:3.8-slim-buster
         1. docker tag python:3.8-slim-buster 208019545904.dkr.ecr.ca-central-1.amazonaws.com/python:3.8-slim-buster
         1. docker push 208019545904.dkr.ecr.ca-central-1.amazonaws.com/python:3.8-slim-buster
+
+
+
+1. CloudFormation Info
+    * https://docs.aws.amazon.com/cloudformation/index.html
+    * https://github.com/awslabs/aws-cloudformation-templates/
+    * https://aws.amazon.com/cloudformation/resources/templates/
+    * https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/blue-green.html
 
 
 Questions:
@@ -200,3 +216,27 @@ It's very easy to make some words **bold** and other words *italic* with Markdow
 
 ![GitHub Logo](/images/logo.png)
 Format: ![Alt Text](url)
+
+# Usefull Commands
+
+208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops@sha256:03f4fb0fbce187c605046658f734c49bef1131d55c9ebdbcdd53b05b8ee98f45
+
+208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops@sha256:3c6109df11e94cf5cb24a12ff7321dbc813cc577efb350f9055e9c11f5278ad1 
+
+docker tag sha256:3c6109df11e94cf5cb24a12ff7321dbc813cc577efb350f9055e9c11f5278ad1 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:V10
+
+docker images 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops
+
+docker images 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops
+
+ docker tag 0e5574283393 myregistryhost:5000/fedora/httpd:version1.0
+
+ sha256:03f4fb0fbce187c605046658f734c49bef1131d55c9ebdbcdd53b05b8ee98f45
+
+ docker pull 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops@sha256:03f4fb0fbce187c605046658f734c49bef1131d55c9ebdbcdd53b05b8ee98f45
+
+ docker tag 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:latest 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:v0.11
+
+ docker tag 7107d2fbc677 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:v0.10
+
+ docker push 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:v0.10

@@ -215,7 +215,8 @@ Resources:
           ContainerPort: !Ref ContainerPort
           TargetGroupArn: !Ref TargetGroup
       # This is a new option that I am testing for Blue/Green deployment model
-      DeploymentController: CODE_DEPLOY
+      DeploymentController: 
+        Type: CODE_DEPLOY
 
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
