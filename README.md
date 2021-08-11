@@ -62,9 +62,17 @@ only change a little before you test the app, like one line at a time if practic
             * Leave **New service role** for Service role
             * Leave Role name
             * Enter **buildspec.yml** for Buildspec name
+            * Expand **Additional configuration**
+            * Change both **Timeouts** to 0 Hours and 5 Minutes
+            * Enter the following **Environment variables**
+               | Name | Value | 
+               | -------- | -----------| 
+               | AWS_ACCOUNT_ID | 208019545904|
+               | IMAGE_TAG | latest |
+               | IMAGE_REPO_NAME | devops|
+               
+               **Note:** Make sure to trim spaces from Names and values.
             * Select **Create build project** button
-            * ??? Environment variables AWS_ACCOUNT_ID 208019545904, IMAGE_TAG latest, IMAGE_REPO_NAME devops ???
-            *
             * The project should be created. 
             * IMPORTANT: Find the service role that has been defined. It is on the Build details tab of the project. 
                 * Select the **Service role** link, preferably in a new tab in the browser
@@ -80,28 +88,13 @@ only change a little before you test the app, like one line at a time if practic
         * Select **Start build** button
         * In a few minutes the project should run which will run the tests and create a new docker image with the new version of the software
 
-
-
-
     1. References:
-        * https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
-
-
-
-    * Make sure the IAM policy to read the source code repository in Code
-
-1. Create a Docker image and push it to AWS Elastic Container Repository (ECR)
-    * Create a CodeBuild project to: run the tests, build the docker container, push the container to ECR. 
-    ??? Doc how and where to do this ??? 
-    * For now, run the CodeBuild Project called DevOps-train4. This currently runs file buildspec.yml on the root of this project.
-    * References
         * https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
         * https://docs.aws.amazon.com/codebuild/latest/userguide/test-reporting.html
 
-
 1. Deploy the image on AWS manually
-    * Select Amazon Elastic Container Service (ECS)
-    * Create a Task
+    1. Select Amazon Elastic Container Service (ECS)
+    1. Create a Task
         * Select **Task definitions** from the menu in upper left hand side in the ECS main page
             * Select **Create new Task Definition** button
             * Select **FARGATE** box
@@ -122,8 +115,7 @@ only change a little before you test the app, like one line at a time if practic
             * The **Launch Status** page should display
             * Select **View task definition**
 
-
-    * Create a Cluster
+    1. Create a Cluster
 
         * Select **Clusters** from the menu in upper left hand side in the ECS main page
             * Select **Create cluster** button
@@ -143,7 +135,7 @@ only change a little before you test the app, like one line at a time if practic
             * Spec ---
             * Leave Deployment type to **Rolling update**
 
-    * The ?????? Start Here Larry
+    1. The ?????? Start Here Larry
 
 
 
