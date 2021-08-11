@@ -63,6 +63,8 @@ only change a little before you test the app, like one line at a time if practic
             * Leave Role name
             * Enter **buildspec.yml** for Buildspec name
             * Select **Create build project** button
+            * ??? Environment variables AWS_ACCOUNT_ID 208019545904, IMAGE_TAG latest, IMAGE_REPO_NAME devops ???
+            *
             * The project should be created. 
             * IMPORTANT: Find the service role that has been defined. It is on the Build details tab of the project. 
                 * Select the **Service role** link, preferably in a new tab in the browser
@@ -80,6 +82,9 @@ only change a little before you test the app, like one line at a time if practic
 
 
 
+
+    1. References:
+        * https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
 
 
 
