@@ -16,6 +16,7 @@ Tools used:
 * AWS cli
 
 ## To Build the application
+
 1. Use VSCode to edit the code and make whatever changes to the source that is required. It is highly suggested that you
 only change a little before you test the app, like one line at a time if practical.
 
@@ -25,7 +26,7 @@ only change a little before you test the app, like one line at a time if practic
     * py app.py
     * In the browser: localhost:5000 
     * test in browser with this [link to localhost:5000!](http://localhost:5000)
-    * note that the hostname should be your computer's name
+    * note that the hostname should be your computer's name.
 
 1. Build the Docker container locally and test
     * In VSCode in the Explorer / Project view; right-click on the file named **Dockerfile** and select the **Build Image...** option.
@@ -40,7 +41,49 @@ only change a little before you test the app, like one line at a time if practic
     * Test the app running in the container [localhost:5010](http://localhost:5010). You can use any 
     available port number instead of 5010.
 
-1. Push changes to the source code repository. The repository is hosted on AWS CodeCommit.
+1. Push changes to the source code repository. The repository is hosted on AWS CodeCommit. ??? Larry add documentation on how to create a repository and push to it. ???
+
+1. Use CodeBuild to test and push a new Docker image to AWS Elastic Container Repository (ECR)
+    1. To create a CodeBuild project, select CodeBuild from the services dropdown:
+        * Select **Build projects** from the left menu
+        * Select **Create build project** button
+        * The **Create build project** should display
+            * Enter **MyBuildProject** for Project Name
+            * Select **AWS CodeCommit** for Source provider
+            * Select **devops_training** for Repository
+            * Select **Branch** for Reference type
+            * Select **Main** for Branch
+            * Select **Managed image** box for Environment Image
+            * Select **Ubuntu** for Operating system
+            * Select **Standard** for Runtime(s)
+            * Select highest number for Image
+            * Select **Linux** for Environment type
+            * Click **Privileged** true
+            * Leave **New service role** for Service role
+            * Leave Role name
+            * Enter **buildspec.yml** for Buildspec name
+            * Select **Create build project** button
+            * The project should be created. 
+            * IMPORTANT: Find the service role that has been defined. It is on the Build details tab of the project. 
+                * Select the **Service role** link, preferably in a new tab in the browser
+                * Select the **Add policy** button
+                * In the **Attach Permissions** page search for **ecr**
+                * Select the box beside **EC2InstanceProfileForImageBuilderECRContainerBuilds** and click it on
+                * Select **Attach policy** button
+            * Now Start the build, as defined in the next step.
+
+    1. To manually trigger a new build once the Build Project is defined, select CodeBuild from the services dropdown.
+        * Select **Build projects** from the left menu
+        * Select **MyBuildProject** from the projects
+        * Select **Start build** button
+        * In a few minutes the project should run which will run the tests and create a new docker image with the new version of the software
+
+
+
+
+
+
+    * Make sure the IAM policy to read the source code repository in Code
 
 1. Create a Docker image and push it to AWS Elastic Container Repository (ECR)
     * Create a CodeBuild project to: run the tests, build the docker container, push the container to ECR. 
