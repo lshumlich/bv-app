@@ -11,8 +11,11 @@ phases:
       python: 3.8
     commands:
       - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
-      - echo $AWS_DEFAULT_REGION
       - echo $AWS_ACCOUNT_ID
+      - echo $AWS_DEFAULT_REGION
+      - echo $IMAGE_REPO_NAME
+      - echo $IMAGE_TAG
+
       - pip3 install pytest
 
   pre_build:
