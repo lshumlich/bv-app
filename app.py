@@ -33,7 +33,7 @@ def get_info():
     servedTime = datetime.datetime.now()
 
     return f"""
-    <h2>Version 0.11 2021-08-10 1:28AM </h2>
+    <h2>Version 0.12 2021-08-11 1:32AM </h2>
     <br/>gethostname: {socket.gethostname()}
     <br/>getfqdn: {socket.getfqdn()}
     <br/>architecture: {platform.architecture()}

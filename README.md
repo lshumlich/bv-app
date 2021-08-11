@@ -92,8 +92,35 @@ only change a little before you test the app, like one line at a time if practic
         * https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html
         * https://docs.aws.amazon.com/codebuild/latest/userguide/test-reporting.html
 
+1. Automate the build process so that when a commit has been made to the **devops** repository in **CodeCommit** the build process is automatically triggered and a new Docker image with the new code is created and pushed to ECR.
+    1. Select **EventBridge Service**
+    1. Select **Rules** from the menu on the left
+        * Select **Create rule** button
+        * Enter **MyBuildDevOpsRule** for Name
+        * Select **Event opattern** box
+        * Click **Pre-defined pattern by service**
+        * Select **AWS** from Service provider dropdown
+        * Select **CodeCommit** from Service name
+        * Select **CodeCommit Repository State Change** from the Event type dropdown
+        * Click **Specific resource(s) by ARN**
+        * Lookup the **ARN** of your devops CodeCommit repository and enter
+        * Select **CodeBuild project** in the Target dropdown
+        * Lookup the **ARN** of your CodeBuild project and enter
+        * Click the **Create** button
+
+
+
+
+
+
+
+
+    1. References:
+        * https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-codebuild-tutorial.html
+    1. ??? Larry Work Here ???
+
 1. Deploy the image on AWS manually
-    1. Select Amazon Elastic Container Service (ECS)
+    1. Select **Amazon Elastic Container Service (ECS)**
     1. Create a Task
         * Select **Task definitions** from the menu in upper left hand side in the ECS main page
             * Select **Create new Task Definition** button
