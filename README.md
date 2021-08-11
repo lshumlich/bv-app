@@ -283,3 +283,15 @@ docker images 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops
  docker tag 7107d2fbc677 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:v0.10
 
  docker push 208019545904.dkr.ecr.ca-central-1.amazonaws.com/devops:v0.10
+
+[Container] 2021/08/10 04:34:56 Running command aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+[Container] 2021/08/11 03:21:05 Running command aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+Error response from daemon: Get https://.dkr.ecr.ca-central-1.amazonaws.com/v2/: dial tcp: lookup .dkr.ecr.ca-central-1.amazonaws.com: no such host
+
+
