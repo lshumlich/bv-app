@@ -1,6 +1,5 @@
 #
-# This buildspec is used
-# for the devops course for Bow Valley
+# This requires enviornment variables are set
 #
 version: 0.2
 
