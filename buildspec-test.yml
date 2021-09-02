@@ -1,0 +1,22 @@
+# 
+# Simple buildspec to run the tests and publish the results
+# 
+# 
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip3 install pytest
+  build:
+    commands:
+      - python -m pytest --junitxml=test-reports/tests.xml
+
+reports:
+  pytest_reports:
+    files:
+      - tests.xml
+    base-directory: test-reports
+    file-format: JUNITXML

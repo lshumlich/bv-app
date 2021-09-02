@@ -1,5 +1,8 @@
 #
-# This requires enviornment variables are set
+# This requires the following enviornment variables are set:
+#   AWS_ACCOUNT_ID	
+#   IMAGE_TAG	
+#   IMAGE_REPO_NAME
 #
 version: 0.2
 
