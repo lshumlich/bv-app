@@ -3,6 +3,8 @@
 #   AWS_ACCOUNT_ID	
 #   IMAGE_TAG	
 #   IMAGE_REPO_NAME
+# 
+# This has been tested and does work.
 #
 version: 0.2
 

@@ -1,6 +1,7 @@
 # 
 # Simple buildspec to run the tests and publish the results
 # 
+# This has been tested and does work.
 # 
 version: 0.2
 
