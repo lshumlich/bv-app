@@ -229,7 +229,7 @@ only change a little before you test the app, like one line at a time if practic
 
 Questions:
     * Setting up target groups
-    * Assigning trafic to the target groups
+    * Assigning traffic to the target groups
 
 LoadBalancer
     Listeners Forward to TargetGroups with Rules 
