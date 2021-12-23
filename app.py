@@ -6,13 +6,14 @@ import datetime
 
 startTime = datetime.datetime.now()
 print(f"-------- devops - training -------- server started: {startTime}")
+cities = None
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return render_template('index.html', msg=get_info())
+    return render_template('index.html', msg=get_info(), cities=cities)
 
 
 @app.route("/stuff")
@@ -46,7 +47,15 @@ def get_info():
     <br/>
     """
 
-
+# 
+# List of canadian cities
+# 
+from utils.db import DB
+db = DB()
+db.select('select id,city from public.canadacities')
+cities = db.result
+# print('The list of cities')
+# print(cities)
 # '----+----1----+----2----+----3----+----4----+----5'
 if __name__ == '__main__':
     # app.run(debug=True, host='localhost')
