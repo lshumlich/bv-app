@@ -50,10 +50,12 @@ def get_info():
 # 
 # List of canadian cities
 # 
-from utils.db import DB
-db = DB()
-db.select('select id,city from public.canadacities')
-cities = db.result
+# --- Comment out the following 4 lines to use a database
+# from utils.db import DB
+# db = DB()
+# db.select('select id,city from public.canadacities')
+# cities = db.result
+# --- Debug Info
 # print('The list of cities')
 # print(cities)
 # '----+----1----+----2----+----3----+----4----+----5'
